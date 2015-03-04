@@ -26,6 +26,10 @@ class MockChannel:
         self.returnHandler = None
         
     
+    def countUndeliveredMessages(self):
+        return self.undeliverableMessages
+    
+    
     def countDeliveredMessages(self):
         return len(self.messages)
     
@@ -107,7 +111,7 @@ class MockQueue:
         elif self.channel.returnHandler is not None:
             self.channel.returnHandler(message)
         else:
-            raise ValueError("Message with routing key " + message.routing_key + " was not delivered!")
+            raise ValueError("There was no consumer for the message with routing key " + message.routing_key + "!")
 
 
     @asyncio.coroutine
