@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(name='asynqp_simulation',
-      version='0.2.0',
+      version='0.3.0',
       author='Georg Wächter',
       author_email='georgwaechter@gmail.com',
       packages=['asynqp_simulation'],

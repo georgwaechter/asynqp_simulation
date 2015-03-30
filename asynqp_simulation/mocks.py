@@ -155,9 +155,9 @@ class MockIncomingMessage(asynqp.Message):
 
 class MockExchange:
     
-    def __init__(self, name, type, channel):
+    def __init__(self, name, type_, channel):
         self.name = name
-        self.type = type
+        self.type = type_
         self.channel = channel
         self.bindings = []
         
@@ -168,6 +168,8 @@ class MockExchange:
         
     
     def publish(self, message, routingKeyForMessage):
+        if not routingKeyForMessage:
+            raise ValueError("Routing key can not be empty!")
         matchingQueues = []
         
         if self.type == 'direct':
