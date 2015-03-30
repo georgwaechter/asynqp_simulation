@@ -63,11 +63,6 @@ class MockChannel:
                 
             self.exchanges[name] = exchange
             return exchange
-
-
-    @asyncio.coroutine
-    def close(self):
-        pass
     
     
     @asyncio.coroutine
@@ -129,7 +124,7 @@ class MockQueue:
 
     @asyncio.coroutine
     def delete(self, *, if_unused=True, if_empty=True):
-       pass
+        pass
    
 
 class MockMessage(asynqp.Message):
@@ -202,7 +197,6 @@ def matchingRoutingKey(routingKey, pattern):
     
     routingElements = routingKey.split('.')
     patternElements = pattern.split('.')
-    matching = True
     
     if len(routingElements) == 0:
         return False
